@@ -6,6 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import main.GradeSystems;
+import main.Grades;
 
 
 public class TestGradeSystems {
@@ -18,18 +19,20 @@ public class TestGradeSystems {
 	
 	@Test
 	public void testGradeSystems_1() {
-		int expected = 87;
-		int actual = aTree.aGrade.lab1;
+		Grades aGrade = aTree.containID("962001044");
+		double expected = 87;
+		double actual = aGrade.lab1;
 		
-		assertEquals(expected, actual);
+		assertEquals(expected, actual, 0.00001);
 	}
 	
 	@Test
 	public void testGradeSystems_2() {
-		int expected = 98;
-		int actual = aTree.right.aGrade.lab2;
+		Grades aGrade = aTree.containID("962001051");
+		double expected = 98;
+		double actual = aGrade.lab2;
 		
-		assertEquals(expected, actual);
+		assertEquals(expected, actual,0.00001);
 	}
 
 }

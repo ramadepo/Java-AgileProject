@@ -5,7 +5,9 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
+import junit.framework.Assert;
 import main.GradeSystems;
+import main.Grades;
 
 
 public class TestContainID {
@@ -18,18 +20,16 @@ public class TestContainID {
 	
 	@Test
 	public void testContainID_1() {
-		boolean expected = true;
-		boolean actual = aTree.containID("962001044");
+		Grades actual = aTree.containID("962001044");
 		
-		assertEquals(expected, actual);
+		assertNotNull(actual);
 	}
 	
 	@Test
 	public void testContainID_2() {
-		boolean expected = false;
-		boolean actual = aTree.containID("");
+		Grades actual = aTree.containID("");
 		
-		assertEquals(expected, actual);
+		assertNull(actual);
 	}
 	
 
