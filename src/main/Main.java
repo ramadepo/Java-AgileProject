@@ -9,6 +9,14 @@
 //Data columns: 
 //	ID     	  name lab1 lab2 lab3 midtermExam finalExam
 //###################################################################*/
+
+package pair16SourceCode;
+
+import java.io.*;
+import java.util.Map;
+import java.util.Scanner;
+import java.util.TreeMap;
+
 //public class Main extends Object {
 //	public static void main (String args[]) 
 //	/*------------------------------------------------------------------------------------------------------
@@ -32,22 +40,12 @@
 //		finally {}
 //		catch (NoSuchIDExceptions       e1) {print msg1} //ID錯了!
 //		catch (NoSuchCommandExceptions e2) {print msg2} //指令錯了!
-//end class Main
-
-package main;
-
-import java.io.*;
-import java.util.Map;
-import java.util.Scanner;
-import java.util.TreeMap;
-
-
 public class Main {
 
 	public static void main(String[] args) {
 		try {
 			UI aUI = new UI();
-			GradeSystems aGradeSystem = new GradeSystems("data/gradeInput.txt");
+			GradeSystems aGradeSystem = new GradeSystems("src/pair16SourceCode/gradeInput.txt");
 			String ID, command;
 			while(true){
 				ID = aUI.promptID();
@@ -90,3 +88,4 @@ public class Main {
 		}
 	}
 }
+//end class Main

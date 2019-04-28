@@ -7,6 +7,14 @@
 //showRank (ID)
 //updateWeights ()   
 //******************************************************/
+
+package pair16SourceCode;
+
+import java.io.*;
+import java.util.Map;
+import java.util.Scanner;
+import java.util.TreeMap;
+
 //public class GradeSystems 
 //	double[5] weights; // initialize with lab1 0.1, lab2 0.1, lab3 0.1, midTerm 0.3, finalExam 0.4
 //	TreeMap <String, Grades> aTree; 
@@ -14,7 +22,10 @@
 //	/* use object of TreeMap class, aTree, to store anEntry objects. 
 //	   It's node is a pair of KEY (ID) and VALUE (aGrade object)
 //	   It's a binary search tree, so right node's key more than root’s key.*/
-//	
+public class GradeSystems {
+	private double[] weights = new double[5];
+	private TreeMap<String, Grades> aTree;
+	
 //	/*----------------------------------------------------------------------------------------------------------
 //	GradeSystems(file) construct aGradeSystem with aTree
 //	parameter: file path
@@ -30,73 +41,6 @@
 //		aGrade.calculateTotalGrade(weights) return aTotalGrade, which is stored in aGrade
 //		make anEntry stored in aTree
 //	end while
-//	
-//	/*-------------------------------------------------------------------------------------------------------------
-//	containID  judge whether aGradeSystem contain this ID or not
-//	parameter: ID (e.g.: 123456789)
-//	exception: NoSuchIDExceptions
-//	return: boolean
-//	time: O(log n)  (n is total people in aGradeSystem)
-//	-------------------------------------------------------------------------------------------------------------*/
-//	for anEntry in aTree
-//		if ID == ID of anEntry then return true 
-//		end if 
-//	end for 
-//	throw an object of NoSuchIDExceptions
-//	
-//	/*-------------------------------------------------------------------------------------------------------------
-//	showGrade(ID) show each grade of user
-//	parameter: ID (e.g.: 123456789)
-//	return: boolean
-//	time: O(log n)  (n is total people in aGradeSystem)
-//	-------------------------------------------------------------------------------------------------------------*/
-//	for anEntry in aTree
-//		if ID == ID of anEntry
-//			print out  all it's grade in aGrade
-//		end if
-//	end for
-//	
-//	/*-------------------------------------------------------------------------------------------------------------
-//	showRank(ID) show the rank of user's total grade
-//	parameter: ID (e.g.: 123456789)
-//	return: boolean
-//	time: O(n + log n)  (n is total people in aGradeSystem)
-//	-------------------------------------------------------------------------------------------------------------*/
-//	get user's theTotalGrade by ID
-//	initialize rank is 1 
-//	for anEntry in aTree 
-//		if aTotalGrade > theTotalGrade then rank+1
-//		end if 
-//	end for
-//	show user's rank
-//
-//	/*-------------------------------------------------------------------------------------------------------------
-//	updateWeights() update the weight of each grade
-//	return: boolean
-//	time: O(n)  (n is total people in aGradeSystem)
-//	-------------------------------------------------------------------------------------------------------------*/
-//	showOldWeights
-//	getNewWeights
-//	confirmNewWeights
-//	setWeights(weights)
-//	for anEntry in aGradeSystem 
-//		calculateTotalGrade(weights) then save it 
-//	end for
-//	 
-//end class GradeSystems
-
-package main;
-
-import java.io.*;
-import java.util.Map;
-import java.util.Scanner;
-import java.util.TreeMap;
-
-
-public class GradeSystems {
-	private double[] weights = new double[5];
-	private TreeMap<String, Grades> aTree;
-	
 	public GradeSystems(String file) {
 		this.weights[0] = 0.1;
 		this.weights[1] = 0.1;
@@ -121,6 +65,19 @@ public class GradeSystems {
 			e.printStackTrace();
 		}
 	}
+
+//	/*-------------------------------------------------------------------------------------------------------------
+//	containID  judge whether aGradeSystem contain this ID or not
+//	parameter: ID (e.g.: 123456789)
+//	exception: NoSuchIDExceptions
+//	return: boolean
+//	time: O(log n)  (n is total people in aGradeSystem)
+//	-------------------------------------------------------------------------------------------------------------*/
+//	for anEntry in aTree
+//		if ID == ID of anEntry then return true 
+//		end if 
+//	end for 
+//	throw an object of NoSuchIDExceptions
 	public Grades containID(String ID) {
 		if(this.aTree.containsKey(ID)) {
 			return this.aTree.get(ID);
@@ -129,6 +86,18 @@ public class GradeSystems {
 			return null;
 		}
 	}
+
+//	/*-------------------------------------------------------------------------------------------------------------
+//	showGrade(ID) show each grade of user
+//	parameter: ID (e.g.: 123456789)
+//	return: boolean
+//	time: O(log n)  (n is total people in aGradeSystem)
+//	-------------------------------------------------------------------------------------------------------------*/
+//	for anEntry in aTree
+//		if ID == ID of anEntry
+//			print out  all it's grade in aGrade
+//		end if
+//	end for
 	public boolean showGrade(String ID) {
 		Grades aGrade = this.aTree.get(ID);
 		System.out.print(aGrade.name + "成績：lab1：    " + Math.round(aGrade.lab1) + "\n" +
@@ -140,6 +109,20 @@ public class GradeSystems {
 		
 		return true;
 	}
+
+//	/*-------------------------------------------------------------------------------------------------------------
+//	showRank(ID) show the rank of user's total grade
+//	parameter: ID (e.g.: 123456789)
+//	return: boolean
+//	time: O(n + log n)  (n is total people in aGradeSystem)
+//	-------------------------------------------------------------------------------------------------------------*/
+//	get user's theTotalGrade by ID
+//	initialize rank is 1 
+//	for anEntry in aTree 
+//		if aTotalGrade > theTotalGrade then rank+1
+//		end if 
+//	end for
+//	show user's rank
 	public boolean showRank(String ID) {
 		Integer rank = 1;
 		Grades aGrade = this.aTree.get(ID);
@@ -154,10 +137,22 @@ public class GradeSystems {
 		System.out.print(aGrade.name + "排名第" + rank + "\n");
 		return true;
 	}
+
+//	/*-------------------------------------------------------------------------------------------------------------
+//	updateWeights() update the weight of each grade
+//	return: boolean
+//	time: O(n)  (n is total people in aGradeSystem)
+//	-------------------------------------------------------------------------------------------------------------*/
+//	showOldWeights
+//	getNewWeights
+//	confirmNewWeights
+//	setWeights(weights)
+//	for anEntry in aGradeSystem 
+//		calculateTotalGrade(weights) then save it 
+//	end for
 	public boolean updateWeights() {
 		Scanner scan = new Scanner(System.in);
 		int lab1, lab2, lab3, mid, fin;
-		
 		System.out.print("舊配分" + "\n" + 
 							"lab1\t" + (int)(this.weights[0]*100) + "%\n" +
 							"lab2\t" + (int)(this.weights[1]*100) + "%\n" +
@@ -182,7 +177,6 @@ public class GradeSystems {
 							"midterm exam\t" + mid + "%" + "\n" + 
 							"final exam\t" + fin + "%" + "\n" + 
 							"以上正確嗎? Y (Yes) 或 N (No)\t");
-		
 		char answer = scan.next().charAt(0);
 		if(answer == 'Y') {
 			this.weights[0] = (double)lab1/100;
@@ -202,3 +196,4 @@ public class GradeSystems {
 		}
 	}
 }
+//end class GradeSystems

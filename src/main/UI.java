@@ -7,12 +7,21 @@
 //showWelcomeMsg(name)
 //UI() construct aUI
 //*************************************************************************/
+
+package pair16SourceCode;
+
+import java.util.Scanner;
+
 //public class UI
+public class UI {
 //	/*----------------------------------------------------------------------------------------------------------
 //	UI() constructor
 //	----------------------------------------------------------------------------------------------------------*/
 //	UI(){}
-//
+	public UI() {
+		
+	}
+
 //	/*-------------------------------------------------------------------------------------------------------------
 //	promptCommand() ask for command
 //	exception: NoSuchCommandExceptions
@@ -28,44 +37,6 @@
 //			situation 3 : W
 //		end if
 //	return inputCommand
-//	
-//	/*-------------------------------------------------------------------------------------------------------------
-//	promptID() ask for user's ID
-//	return: ID or Q
-//	-------------------------------------------------------------------------------------------------------------*/
-//	prompt user for ID or command Q
-//		if input is Q
-//			returnValue is Q
-//		else if input is ID
-//			returnValue is ID
-//		end if
-//	return returnValue
-//	
-//	/*-------------------------------------------------------------------------------------------------------------
-//	showFinishMsg() show msg in the end
-//	return: boolean 
-//	-------------------------------------------------------------------------------------------------------------*/
-//	print the msg : 結束了
-//	return true
-//	
-//	/*-------------------------------------------------------------------------------------------------------------
-//	showWelcomeMsg(name) show msg in the beginning
-//	parameter: user's name
-//	return: boolean 
-//	-------------------------------------------------------------------------------------------------------------*/
-//	print the welcome msg to user, e.g.: Welcome 李威廷
-//	return true
-//end class UI
-
-package main;
-
-import java.util.Scanner;
-
-
-public class UI {
-	public UI() {
-		
-	}
 	public String promptCommand() {
 		Scanner scan = new Scanner(System.in);
 		System.out.print("輸入指令\t1) G 顯示成績 (Grade)" + "\n" + 
@@ -81,6 +52,18 @@ public class UI {
 			return "";
 		}
 	}
+
+//	/*-------------------------------------------------------------------------------------------------------------
+//	promptID() ask for user's ID
+//	return: ID or Q
+//	-------------------------------------------------------------------------------------------------------------*/
+//	prompt user for ID or command Q
+//		if input is Q
+//			returnValue is Q
+//		else if input is ID
+//			returnValue is ID
+//		end if
+//	return returnValue
 	public String promptID() {
 		Scanner scan = new Scanner(System.in);
 		System.out.print("輸入ID或 Q (結束使用)？\t");
@@ -96,14 +79,30 @@ public class UI {
 			return "";
 		}
 	}
+
+//	/*-------------------------------------------------------------------------------------------------------------
+//	showFinishMsg() show msg in the end
+//	return: boolean 
+//	-------------------------------------------------------------------------------------------------------------*/
+//	print the msg : 結束了
+//	return true
 	public boolean showFinishMsg() {
 		System.out.print("結束了\n");
 		
 		return true;
 	}
+
+//	/*-------------------------------------------------------------------------------------------------------------
+//	showWelcomeMsg(name) show msg in the beginning
+//	parameter: user's name
+//	return: boolean 
+//	-------------------------------------------------------------------------------------------------------------*/
+//	print the welcome msg to user, e.g.: Welcome 李威廷
+//	return true
 	public boolean showWelcomeMsg(String name) {
 		System.out.print("Welcome " + name + "\n");
 		
 		return true;
 	}
 }
+//end class UI
